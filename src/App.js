@@ -7,6 +7,7 @@ class App extends Component{
     super(props);
     this.state = {
       isDirection:true,
+      isAlphabet:true,
       users:[
         {
           id:1,
@@ -54,10 +55,35 @@ class App extends Component{
     })
   }
   sortUsersAlpha = () =>{
-    
+    const {users,isAlphabet} = this.state;
+    const sortUsers = JSON.parse(JSON.stringify(users));
+    //const sortUsers = [...users];
+    console.log(sortUsers);
+    sortUsers.sort((prev, next)=>{
+      if(!isAlphabet){
+        if(prev.fname>next.fname){
+          return -1;
+        }
+        if(prev.fname<next.fname){
+          return 1;
+        }
+        return 0;
+      }
+      if(prev.fname>next.fname){
+        return 1;
+      }
+      if(prev.fname<next.fname){
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      isAlphabet:!isAlphabet,
+      users:sortUsers,
+    })
   }
   render(){
-    const {users,isDirection} = this.state;
+    const {users,isDirection,isAlphabet} = this.state;
     return <>
     <p>
     <button onClick={this.sortUsers}>SORT BY NUMBER {isDirection?'straight ':'reverse '}</button>
