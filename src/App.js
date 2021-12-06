@@ -1,11 +1,12 @@
 import './App.css';
 import React, {Component} from 'react';
-import SignInForm from './components/forms/SignInForm';
+import LearnHooks from './components/LearnHooks';
+
 
 function App(){
   return(
     <>
-    <SignInForm />
+    <LearnHooks />
     </>
   );
 }
