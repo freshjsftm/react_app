@@ -1,12 +1,17 @@
 import './App.css';
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import LearnHooks from './components/LearnHooks';
 
 
 function App(){
+  const [isVisible, setIsVisible] = useState(true);
+  const handlerBtn = ()=>{
+    setIsVisible(!isVisible);
+  }
   return(
     <>
-    <LearnHooks />
+    <button onClick={handlerBtn}>switch</button>
+    {isVisible && <LearnHooks />}
     </>
   );
 }
