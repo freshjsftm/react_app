@@ -1,22 +1,31 @@
 import React, {useState} from 'react';
 
 const LearnHooks = () => {
-  const [count, setCount] = useState(0);
-  const [step, setStep] = useState(1);
-  const handlerClick = ()=>{
-    setCount(count+step);
+  const [state, setState] = useState({
+    x:0,
+    y:0,
+    count: 0,
+  });
+  const handlerMove = (event) =>{
+    setState({
+      ...state,
+      x:event.clientX,
+      y:event.clientY,
+    }
+    )
   }
-  const handlerInput = ({target:{value}})=>{
-    setStep(Number(value));
+  const handlerClick = () =>{
+    setState({
+      ...state,
+      count: state.count+1,
+    })
   }
-  console.log('render');
   return (
-    <div>
-      <h2>Count: {count}</h2>
-      <button onClick={handlerClick}>Add</button>
-      <p>
-        <input type='number' value={step} onChange={handlerInput}/>
-      </p>
+    <div style={{height:'90vh'}}
+    onMouseMove={handlerMove} onClick={handlerClick}>
+      <p> x:{state.x}</p>
+      <p> y:{state.y}</p>
+      <p> count:{state.count}</p>
     </div>
   );
 }
