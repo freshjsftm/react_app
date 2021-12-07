@@ -1,21 +1,24 @@
 import './App.css';
 import React, {useState} from 'react';
-import FuncStopWatch from './components/FuncStopWatch';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import {UserContext} from './context';
 
 function App(){
-  const [isVisible, setIsVisible] = useState(true);
-  const handlerBtn = ()=>{
-    setIsVisible(!isVisible);
-  }
+  const [user, setUser] = useState({
+    id:1,
+    name:'Elon Musk'
+  });
   return(
-    <>
-    <button onClick={handlerBtn}>switch</button>
-    {isVisible && <FuncStopWatch />}
-    </>
+    <UserContext.Provider value={user}>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
+    </UserContext.Provider>
   );
 }
-
 
 export default App;
 
