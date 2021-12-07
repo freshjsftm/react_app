@@ -40,6 +40,7 @@ class UsersLoader extends Component {
     })
     this.load();
   }
+  
   componentDidUpdate(prevProps, prevState){
     const {currentPage,currentResults,currentNat} = this.state;
     const isUpdate = currentPage!==prevState.currentPage || 

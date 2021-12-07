@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
-const LearnHooks = () => {
+const LearnHooks = (props) => {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(10);
+
   const handlerStep = ({target:{value}}) =>{ setStep(Number(value))}
 
   useEffect(()=>{  
@@ -11,6 +12,7 @@ const LearnHooks = () => {
     } 
     document.body.addEventListener('click', handlerClick);
     console.log('add effect')
+
     return ()=>{
       document.body.removeEventListener('click', handlerClick);
       console.log('remove effect')
@@ -26,3 +28,4 @@ const LearnHooks = () => {
 }
 
 export default LearnHooks;
+

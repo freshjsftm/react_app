@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useState} from 'react';
-import LearnHooks from './components/LearnHooks';
+import FuncStopWatch from './components/FuncStopWatch';
 
 
 function App(){
@@ -11,7 +11,7 @@ function App(){
   return(
     <>
     <button onClick={handlerBtn}>switch</button>
-    {isVisible && <LearnHooks />}
+    {isVisible && <FuncStopWatch />}
     </>
   );
 }
