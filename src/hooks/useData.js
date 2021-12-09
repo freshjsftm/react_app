@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 
 export default function useData(getData){
   const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState();
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(()=>{
