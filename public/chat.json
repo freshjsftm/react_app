@@ -1,0 +1,41 @@
+{
+  "autors":[
+    {
+      "id":1,
+      "name":"Elon",
+      "avatar":"avatar.png"
+    },
+    {
+      "id":2,
+      "name":"Elen",
+      "avatar":"avatar.png"
+    },
+    {
+      "id":3,
+      "name":"Elan",
+      "avatar":"avatar.png"
+    }
+  ],
+  "messages":[
+    { 
+      "id":1,
+      "body":"message 1",
+      "autorId":1
+    },
+    { 
+      "id":2,
+      "body":"message 2",
+      "autorId":3
+    },
+    { 
+      "id":3,
+      "body":"message 3",
+      "autorId":2
+    },
+    { 
+      "id":4,
+      "body":"message 4",
+      "autorId":3
+    }
+  ]
+}
