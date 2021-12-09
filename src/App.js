@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import {UserContext, ThemeContext} from './context';
 import CONSTANTS from './constants';
+import {useClicker} from './hooks';
 const {THEMES} = CONSTANTS;
 
 function App(){
@@ -13,11 +14,12 @@ function App(){
   });
   //theme
   const themeArrState = useState(THEMES.LIGHT);
-  
+  const count = useClicker(0);
   return(
     <ThemeContext.Provider value={themeArrState}>
     <UserContext.Provider value={user}>
     <BrowserRouter>
+      <h1>count: {count}</h1>    
       <Routes>
         <Route path='/' element={<HomePage />} />
       </Routes>
