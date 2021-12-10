@@ -18,11 +18,14 @@ function App(){
   });
   const themeArrState = useState(THEMES.LIGHT);
   const [state, dispatch] = useReducer(reducer, {isMenuOpen:false});
+  const openMenu = () => dispatch({type: ACTIONS.MENU_OPEN});
+  const closeMenu = () => dispatch({type: ACTIONS.MENU_CLOSE});
   return(
+    <AppContext.Provider value={{state, closeMenu}}>
     <ThemeContext.Provider value={themeArrState}>
     <UserContext.Provider value={user}>
     <BrowserRouter>
-      <MenuOpenIcon />
+      <MenuOpenIcon onClick={openMenu}/>
       <NavMenu />
       <Routes>
         <Route path='/' element={<HomePage />} />
@@ -32,6 +35,7 @@ function App(){
     </BrowserRouter>
     </UserContext.Provider>
     </ThemeContext.Provider>
+    </AppContext.Provider>
   );
 }
 
