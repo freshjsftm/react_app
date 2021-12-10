@@ -4,9 +4,9 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import {UserContext, ThemeContext} from './context';
 import CONSTANTS from './constants';
-import {useClicker} from './hooks';
 import SignUpForm from './components/forms/SignUpForm';
 import Chat from './components/Chat';
+import NavMenu from './components/NavMenu';
 const {THEMES} = CONSTANTS;
 
 function App(){
@@ -14,21 +14,12 @@ function App(){
     id:1,
     name:'Elon Musk'
   });
-  //theme
   const themeArrState = useState(THEMES.LIGHT);
-  const count = useClicker(0);
   return(
     <ThemeContext.Provider value={themeArrState}>
     <UserContext.Provider value={user}>
     <BrowserRouter>
-      {/* <h1>count: {count}</h1>     */}
-      <nav>
-        <ol>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/signup'>Registration</Link></li>
-          <li><Link to='/chat'>Chat</Link></li>
-        </ol>
-      </nav>
+      <NavMenu />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/signup' element={<SignUpForm />} />
