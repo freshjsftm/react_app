@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState, useReducer, useRef, useEffect} from 'react';
+import React, {useState, useReducer, createRef, useEffect} from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import HomePage from './pages/HomePage';
@@ -21,26 +21,13 @@ function App(){
   const openMenu = () => dispatch({type: ACTIONS.MENU_OPEN});
   const closeMenu = () => dispatch({type: ACTIONS.MENU_CLOSE});
 
-
-  const navRef = React.createRef();
-  useEffect(()=>{
-    const handlerClick = ({target})=>{
-      console.log(navRef)
-      if(state.isMenuOpen && !navRef.current.contains(target)){
-        closeMenu();
-      }
-    }
-    window.addEventListener('click', handlerClick)
-    return ()=> window.removeEventListener('click', handlerClick);
-  }, [state.isMenuOpen]);
-
   return(
-    <AppContext.Provider value={{state, closeMenu}}>
+    <AppContext.Provider value={{state, closeMenu, openMenu}}>
     <ThemeContext.Provider value={themeArrState}>
     <UserContext.Provider value={user}>
     <BrowserRouter>
       <MenuOpenIcon onClick={openMenu}/>
-      <NavMenu navRef={navRef}/>
+      <NavMenu />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/signup' element={<SignUpForm />} />
