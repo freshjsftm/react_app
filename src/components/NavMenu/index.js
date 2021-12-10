@@ -8,7 +8,7 @@ const NavMenu = () => {
   const classNames = cx(styles.container);
   return (
     <nav className={classNames}>
-      <CloseIcon />
+      <CloseIcon className={styles.closeBtn}/>
       <ul className={styles.list}>
         <li>
           <NavLink to='/'>Home</NavLink>

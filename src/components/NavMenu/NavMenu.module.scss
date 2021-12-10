@@ -1,11 +1,11 @@
-$width : 300px;
+$width : 200px;
 .container{
   width: $width;
   display: flex;
   flex-direction: column;
   position: fixed;
-  // left: -$width;
-  left:0;
+  left: -$width;
+  // left:0;
   top:0;
   bottom: 0;
   background-color: pink;
@@ -18,8 +18,14 @@ $width : 300px;
     padding: 0.5rem;
     text-decoration: none;
     border-bottom: transparent 3px solid;
+    color:#fff;
     &:hover{
-      border-bottom-color: rgb(248, 140, 158);
+      border-bottom-color: #fff;
     }
   }
+}
+.closeBtn{
+  margin-left: auto;
+  color:#fff;
+  padding: 0.5rem;
 }
